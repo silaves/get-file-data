@@ -1,16 +1,16 @@
-const {createContainer, InjectionMode} = require("awilix");
-const {registerEnvironment} = require("./environment");
-const {registerRestApi} = require("./api");
+import { createContainer, InjectionMode } from 'awilix'
+import { registerEnvironment } from './environment.js'
+import { registerRestApi } from './api.js'
+import { registerUtils } from './utlis.js'
 
-const configureContainer = () => {
+export const configureContainer = () => {
   const container = createContainer({
-    injectionMode: InjectionMode.PROXY,
-  });
+    injectionMode: InjectionMode.PROXY
+  })
 
-  registerEnvironment(container);
-  registerRestApi(container);
+  registerEnvironment(container)
+  registerUtils(container)
+  registerRestApi(container)
 
-  return container;
+  return container
 }
-
-module.exports = {configureContainer};

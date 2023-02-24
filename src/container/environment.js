@@ -1,10 +1,10 @@
-const {asValue} = require("awilix");
-const dotenv = require("dotenv");
+import { asValue } from 'awilix'
+import dotenv from 'dotenv'
 
-const envFound = dotenv.config();
+const envFound = dotenv.config()
 
 if (envFound.error) {
-  throw new Error ("Couldn't find .env file");
+  throw new Error("Couldn't find .env file")
 }
 
 const {
@@ -14,9 +14,14 @@ const {
   NODE_ENV,
   HOST_APP_FILE_DATA,
   LIGHTSHIP_PORT,
-} = process.env;
+  API_SECRET_FILES_LIST,
+  API_SECRET_FILE,
+  HOST_SECRET_FILE,
+  TOKEN_SECRET_FILE,
+  TYPE_AUTH_SECRET_FILE
+} = process.env
 
-const registerEnvironment = (container) => {
+export const registerEnvironment = (container) => {
   container.register({
     appConfig: asValue({
       serverPort: parseInt(SERVER_PORT),
@@ -26,10 +31,15 @@ const registerEnvironment = (container) => {
       hostAppFileData: HOST_APP_FILE_DATA,
       lightshipConfiguration: {
         port: parseInt(LIGHTSHIP_PORT),
-        detectKubernetes: false,
+        detectKubernetes: false
+      },
+      secretFile: {
+        host: HOST_SECRET_FILE,
+        token: TOKEN_SECRET_FILE,
+        typeAuth: TYPE_AUTH_SECRET_FILE,
+        apiFilesList: API_SECRET_FILES_LIST,
+        apiFile: API_SECRET_FILE
       }
-    }),
-  });
+    })
+  })
 }
-
-module.exports = {registerEnvironment};

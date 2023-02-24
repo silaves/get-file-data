@@ -1,12 +1,10 @@
-const expressWinston = require('express-winston');
-const {logger} = require("../../logger");
+import expressWinston from 'express-winston'
+import { logger } from '../../logger/index.js'
 
-const requestLogger = expressWinston.logger({
-  winstonInstance: logger,
-});
+export const requestLogger = expressWinston.logger({
+  winstonInstance: logger
+})
 
-const errorLogger = expressWinston.errorLogger({
-  winstonInstance: logger,
-});
-
-module.exports = {requestLogger, errorLogger};
+export const errorLogger = expressWinston.errorLogger({
+  winstonInstance: logger
+})
