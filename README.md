@@ -1,5 +1,15 @@
 # get-file-data 
 
+## Stack
+
+- NodeJs
+- Express 
+- Awilix
+- Mocha
+- Chai
+- nodemon
+- pm2
+
 ## Guía rápida para levantar la aplicación
 Puede levantar la aplicación de 3 maneras.
 
